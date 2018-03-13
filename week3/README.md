@@ -57,7 +57,7 @@ final_test.py
 ```
 python final_test.py
 ```
-- In the GUI, you should see `UR3` robot move according to the input theta. In the terminal, the predicted tool-frame pose using forward kinematics and the actual pose of tool-frame achieved by passing in theta to `simxSetObjectPosition()` should be printed.
+- In the GUI, you should see `UR3` robot move according to the input theta. Predicted frame will be displayed in the scene. It can be shown that the current tool frame will finally fit the predicted frame. In the terminal, the predicted tool-frame pose using forward kinematics and the actual pose of tool-frame achieved by passing in theta to `simxSetObjectPosition()` should be printed.
 
 
 ### 4. Code
@@ -84,7 +84,7 @@ Obtain `a` by looking at each joint and get an approximate orientation vector, a
   T_test= T_test.dot(exm(s[:,2],theta[2]))
   T_test = T_test.dot(exm(s[:,3],theta[3]))
   T_test = T_test.dot(exm(s[:,4],theta[4]))
-  T_test = T_test.dot(M)`
+  T_test = T_test.dot(M)
 ```
 
 - For the main part of program, firstly we set the joint1 frame as the referenceFrame for all the other joints.
@@ -119,4 +119,4 @@ We created an user interface to facilitate users to input six theta values for s
 
 #### 5.3 Getting position and orientation using API function
 
-For all the orientation and position (except orientation of each joint), we used the API functions to obtain the data instead of eyeballing or reading from the GUI.
+For all the orientation and position (except orientation of each joint), we used the API functions to determine relative positions of different joints to base frame instead of using sketch.
